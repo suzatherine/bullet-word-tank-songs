@@ -729,7 +729,7 @@ setup.backThirty = () => {
   <track kind="captions" srclang="en" label="English captions" id="captrack" default>
 </audio>
 <div class="poster-wrapper" id="poster">
-   <img class="poster" src="./../assets/img/obpy.jpeg"/>
+   <img class="poster" src="./../assets/img/bullet.png"/>
  </div>
   
 <div id="caption" class="hide"></div>
