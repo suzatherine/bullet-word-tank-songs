@@ -767,6 +767,9 @@ setup.backThirty = () => {
 
  &lt;&lt;/replace&gt;&gt;
  &lt;&lt;/timed&gt;&gt;
+
+ &lt;&lt;timed 596s &gt;&gt;&lt;&lt;goto &quot;oneartist&quot;&gt;&gt;
+ &lt;&lt;/timed&gt;&gt;
 &lt;/main&gt;
 
 &lt;&lt;include &quot;footerstory&quot;&gt;&gt;
@@ -855,7 +858,29 @@ Don’t we already have enough grief?
 NARRATOR:
 
 Across the centuries of Russian invasion and occupation in Ukraine, thousands of artists have faced brutal censorship, torture and imprisonment. 
-We’ll never know all their names or how many people have been killed. So we’ll leave each person who has listened, with the name of one artist to remember.</tw-passagedata><tw-passagedata pid="16" name="instnar3" tags="nobr" position="725,225" size="100,100">&lt;&lt;set $prevpass to &quot;bullet&quot;&gt;&gt;
+We’ll never know all their names or how many people have been killed. So we’ll leave each person who has listened, with the name of one artist to remember.</tw-passagedata><tw-passagedata pid="16" name="oneartist" tags="nobr" position="725,225" size="100,100">&lt;&lt;set $prevpass to &quot;bullet&quot;&gt;&gt;
+&lt;&lt;set $passage to &quot;oneartist&quot;&gt;&gt;
+&lt;&lt;set $nextpass to &quot;instnar3&quot;&gt;&gt;
+&lt;&lt;set $showMap to false&gt;&gt;
+&lt;&lt;set $showAudio to false&gt;&gt;
+&lt;&lt;set $showReplay to true&gt;&gt;
+&lt;&lt;set $showBackwards to true&gt;&gt;
+&lt;&lt;set $showForwards to true&gt;&gt;
+&lt;&lt;set $showCaptionsIcon to false&gt;&gt;
+
+/* &lt;&lt;set $artists to &gt;&gt; */
+&lt;&lt;set $artist to either(&quot;Oleh Sobchenko&quot;,&quot;Valerii Romanovskyi&quot;, &quot;Vitalii Pyvovarov&quot;,&quot;Viktor Onysko&quot;,&quot;Oleksandr Snihurovskyi&quot;,&quot;Oleh Bobalo-Yaremchuk&quot;,
+&quot;Serhii Shkvarchenko&quot;,&quot;Yaroslav Harkavko&quot;,&quot;Vadym Stetsiuk&quot;,&quot;Volodymyr Vakulenko&quot;,&quot;Serhii Myronov&quot;,&quot;Vadym Khlupianets&quot;,&#39;Yurii Kostyk&#39;,&quot;Yurii Kerpatenko&quot;,&quot;Viacheslav Zaitsev&quot;,&quot;Oleksandr Shapoval&quot;,&quot;Roman Barvinok-Skrypal&quot;,&quot;Artem Dovhopoly&quot;,&quot;Glib Babich&quot;,&quot;Roman Zhuk&quot;,&quot;Oleksandr Suvorov&quot;,&quot;Denys Antipov&quot;,&quot;Bohdan Slyushchynsky&quot;,&quot;Ilya Chernilevskyi&quot;,&quot;Natalia Kharakoz&quot;,&quot;Lyubov Panchenko&quot;,&quot;Elizaveta Ochkur&quot;,&quot;Sonya Amelchykova&quot;,&quot;Serhii Skald&quot;,&quot;Serhii Burov&quot;,&quot;Mantas Kvedaravičius&quot;,&quot;Nadiia Agafonova&quot;,&quot;Yevhen Bal&quot;,&quot;Yurii Ruf&quot;,&quot;Sviatoslav Pashinsky&quot;,&quot;Serhii Zaikovsky&quot;,&quot;Artem Datsyshyn&quot;,&quot;Oksana Shvets&quot;,&quot;Pavlo Yeremenko&quot;,&quot;Artem Azarov&quot;,&quot;Pavlo (Pasha) Lee&quot;,&quot;Oleksandr Kisliuk&quot;,&quot;Oleksandr Tarasenko&quot;,&quot;Serhii Pushchenko&quot;)&gt;&gt;
+&lt;main&gt;
+&lt;div id=&quot;mount&quot;&gt;&lt;/div&gt;
+&lt;&lt;timed 2s&gt;&gt;&lt;&lt;replace &quot;#mount&quot;&gt;&gt;
+&lt;h1&gt;$artist&lt;/h1&gt;
+&lt;&lt;/replace&gt;&gt;&lt;&lt;/timed&gt;&gt;
+&lt;&lt;timed 10s&gt;&gt;&lt;&lt;goto &quot;instnar3&quot;&gt;&gt;&lt;&lt;/timed&gt;&gt;
+
+&lt;/main&gt;
+
+&lt;&lt;include &quot;footer&quot;&gt;&gt;</tw-passagedata><tw-passagedata pid="17" name="instnar3" tags="nobr" position="850,225" size="100,100">&lt;&lt;set $prevpass to &quot;oneartist&quot;&gt;&gt;
 &lt;&lt;set $passage to &quot;instnar3&quot;&gt;&gt;
 &lt;&lt;set $nextpass to &quot;end&quot;&gt;&gt;
 &lt;&lt;set $showMap to false&gt;&gt;
@@ -878,7 +903,7 @@ We’ll never know all their names or how many people have been killed. So we’
 
 
 &lt;/main&gt;
-&lt;&lt;include &quot;footer&quot;&gt;&gt;</tw-passagedata><tw-passagedata pid="17" name="end" tags="nobr" position="850,225" size="100,100">&lt;&lt;set $prevpass to &quot;instnar3&quot;&gt;&gt;
+&lt;&lt;include &quot;footer&quot;&gt;&gt;</tw-passagedata><tw-passagedata pid="18" name="end" tags="nobr" position="975,225" size="100,100">&lt;&lt;set $prevpass to &quot;instnar3&quot;&gt;&gt;
 &lt;&lt;set $passage to &quot;end&quot;&gt;&gt;
 &lt;&lt;set $nextpass to &quot;end&quot;&gt;&gt;
 &lt;&lt;set $showMap to false&gt;&gt;

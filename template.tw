@@ -751,6 +751,9 @@ setup.backThirty = () => {
 
  <</replace>>
  <</timed>>
+
+ <<timed 596s >><<goto "oneartist">>
+ <</timed>>
 </main>
 
 <<include "footerstory">>
@@ -848,10 +851,34 @@ Across the centuries of Russian invasion and occupation in Ukraine, thousands of
 We’ll never know all their names or how many people have been killed. So we’ll leave each person who has listened, with the name of one artist to remember.
 
 
+:: oneartist[nobr]
+<<set $prevpass to "bullet">>
+<<set $passage to "oneartist">>
+<<set $nextpass to "instnar3">>
+<<set $showMap to false>>
+<<set $showAudio to false>>
+<<set $showReplay to true>>
+<<set $showBackwards to true>>
+<<set $showForwards to true>>
+<<set $showCaptionsIcon to false>>
+
+/* <<set $artists to >> */
+<<set $artist to either("Oleh Sobchenko","Valerii Romanovskyi", "Vitalii Pyvovarov","Viktor Onysko","Oleksandr Snihurovskyi","Oleh Bobalo-Yaremchuk",
+"Serhii Shkvarchenko","Yaroslav Harkavko","Vadym Stetsiuk","Volodymyr Vakulenko","Serhii Myronov","Vadym Khlupianets",'Yurii Kostyk',"Yurii Kerpatenko","Viacheslav Zaitsev","Oleksandr Shapoval","Roman Barvinok-Skrypal","Artem Dovhopoly","Glib Babich","Roman Zhuk","Oleksandr Suvorov","Denys Antipov","Bohdan Slyushchynsky","Ilya Chernilevskyi","Natalia Kharakoz","Lyubov Panchenko","Elizaveta Ochkur","Sonya Amelchykova","Serhii Skald","Serhii Burov","Mantas Kvedaravičius","Nadiia Agafonova","Yevhen Bal","Yurii Ruf","Sviatoslav Pashinsky","Serhii Zaikovsky","Artem Datsyshyn","Oksana Shvets","Pavlo Yeremenko","Artem Azarov","Pavlo (Pasha) Lee","Oleksandr Kisliuk","Oleksandr Tarasenko","Serhii Pushchenko")>>
+<main>
+<div id="mount"></div>
+<<timed 2s>><<replace "#mount">>
+<h1>$artist</h1>
+<</replace>><</timed>>
+<<timed 10s>><<goto "instnar3">><</timed>>
+
+</main>
+
+<<include "footer">>
 
 
 :: instnar3 [nobr]
-<<set $prevpass to "bullet">>
+<<set $prevpass to "oneartist">>
 <<set $passage to "instnar3">>
 <<set $nextpass to "end">>
 <<set $showMap to false>>
