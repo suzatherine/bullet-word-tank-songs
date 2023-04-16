@@ -232,7 +232,10 @@ setup.backThirty = () => {
 
 
 :: StoryInit {"position":"100,100","size":"100,100"}
-<<cacheaudio "premiere" "https://remote.co.com/MoTT/AgentTraining/Sounds/13.%20Challenge%203%20-%202.mp3">>
+<<cacheaudio "57" "./../assets/audio/57.mp3">>
+<<cacheaudio "58" "./../assets/audio/58.mp3">>
+<<cacheaudio "59" "./../assets/audio/59.mp3">>
+<<cacheaudio "60" "./../assets/audio/60.mp3">>
 <<waitforaudio>>
 
 
@@ -575,7 +578,28 @@ setup.backThirty = () => {
 
 
 
+:: beginning [nobr]  {"position":"700,175","size":"100,100"}
+<<set $prevpass to "beginning">>
+<<set $passage to "beginning">>
+<<set $nextpass to "landing">>
+<<set $transcript to false>>
+<<set $playToggle to false>>
+<<set $captionToggle to false>>
+<<set $showForwards to true>>
+<<set $showBackwards to false>>
+<<set $showCaptionsIcon to true>>
+<<set $showMap to false>>
 
+<div class="comp-warning">Best experienced on a phone</div>
+<main class="" id="">
+
+<div class="poster-wrapper" id="poster">
+   <img class="poster" src="./../assets/img/bullet.png"/>
+ </div>
+ <div class="menu-wrapper">
+    <<button "Begin">><<goto $nextpass>><</button>>
+</div>
+</main>
 
 
 
@@ -647,7 +671,7 @@ setup.backThirty = () => {
 
 :: landing [nobr]
 <<set $title to "Bullet Words & Tank Songs">>
-<<set $prevpass to "landing">>
+<<set $prevpass to "beginning">>
 <<set $passage to "landing">>
 <<set $nextpass to "instnar2">>
 <<set $showMap to true>>
@@ -657,6 +681,7 @@ setup.backThirty = () => {
 <<set $showBackwards to true>>
 <<set $showCaptionsIcon to false>>
 <<set $map = setup.generateViewMap({originLat: 53.407230016564334, originLong:-2.994833555821011, originName: "Liverpool Parish Church"})>>
+<<audio ":all" stop>><<audio "57" play>>
 <div id="audio"></div>
 <<include "header">>
 <div class="comp-warning">Best to experience on a phone</div>
@@ -692,12 +717,14 @@ setup.backThirty = () => {
 <main class="instructions">
 <div id="map" class="hide">$map</div>
   <<if $church is "open">>
+  <<audio ":all" stop>><<audio "58" play>>
    <p> Go inside and take a seat.</p>
 
 <p>(If there is a service on, go back and press closed)</p>
   <<button "I'm ready">><<goto $nextpass>><</button>>
 <</if>>
   <<if $church is "closed">>
+  <audio ":all" stop>><<audio "59" play>>
 <p>Go through to the Garden and take seat on one of the benches </p>
 <p>You can see the view right down to the river</p>
     <<button "I'm ready">><<goto $nextpass>><</button>>
@@ -722,6 +749,7 @@ setup.backThirty = () => {
 <<set $showMap to false>>
 <<set $transcriptname to  "bullettranscript">>
 <<include "headerstory">>
+<audio ":all" stop>><<audio "59" play>>
 <main class="story" id="storyContainer">
 <audio id="audio" >
   <source src="https://www.dropbox.com/s/zo70uwg7pv2cgcj/09.%20Bullet%20words%20and%20Tank%20songs%20V2.mp3?raw=1">
@@ -853,7 +881,7 @@ We’ll never know all their names or how many people have been killed. So we’
 :: oneartist[nobr]
 <<set $prevpass to "bullet">>
 <<set $passage to "oneartist">>
-<<set $nextpass to "instnar3">>
+<<set $nextpass to "epilogue">>
 <<set $showMap to false>>
 <<set $showAudio to false>>
 <<set $showReplay to true>>
@@ -869,14 +897,14 @@ We’ll never know all their names or how many people have been killed. So we’
 <<timed 2s>><<replace "#mount">>
 <h1>$artist</h1>
 <</replace>><</timed>>
-<<timed 10s>><<goto "instnar3">><</timed>>
+<<timed 10s>><<goto $nextpass>><</timed>>
 
 </main>
 
 <<include "footer">>
 
 
-:: instnar3 [nobr]
+:: epilogue [nobr]
 <<set $prevpass to "oneartist">>
 <<set $passage to "instnar3">>
 <<set $nextpass to "end">>
@@ -887,8 +915,15 @@ We’ll never know all their names or how many people have been killed. So we’
 <<set $showForwards to true>>
 <<set $showCaptionsIcon to false>>
 
-<div id="audio"></div>
 
+<audio id="audio" >
+  <source src="https://www.dropbox.com/s/zi644b5agbfrjif/Epilogue%20V1.mp3?raw=1">
+  <track kind="captions" srclang="en" label="English captions" id="captrack" default>
+</audio>
+
+<div id="audio"></div>
+/* TODO FROM HERE AUDIO IS PART OF EPILOGUE */
+/* TODO ADD FOOTER & Transcript  */
 <main class="instructions">
 <div id="map" class="hide">$map</div>
 <p>With Fire And Rage is created from the testomiones, photography, artwork and music of artists across Ukraine. </p>
@@ -896,11 +931,22 @@ We’ll never know all their names or how many people have been killed. So we’
 
 <p>[LINK HERE]</p>
 
+<p>Finally, before I leave you in your city and go back to mine, I invite you to listen to one more piece… </p>
+<p>
+  A poem that starts at the end and finishes at the beginning. 
+  Maybe you can listen walking down to the river. 
+</p>
+<p>On your way home, or save it for another day…</p>
+
+
   <<button "Next">><<goto $nextpass>><</button>>
 
 
 </main>
 <<include "footer">>
+
+
+
 
 
 
