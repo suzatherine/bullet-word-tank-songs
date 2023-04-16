@@ -481,6 +481,7 @@ main.story {
 }
 
 main.story > #mount > p.comment,
+main.story > #mount > #innermount > p.comment,
 .nav-item > #mount > span.comment {
   background-color: var(--accent-color-secondary);
   padding: 6px 8px;

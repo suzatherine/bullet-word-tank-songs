@@ -7,7 +7,7 @@ Bullet Words & Tank Songs
 	"ifid": "F9E39354-F641-4070-8B45-C337A3FDC8C9",
 	"format": "SugarCube",
 	"format-version": "2.36.1",
-	"start": "landing",
+	"start": "beginning",
 	"zoom": 0.6
 }
 
@@ -582,6 +582,7 @@ setup.backThirty = () => {
 <<set $prevpass to "beginning">>
 <<set $passage to "beginning">>
 <<set $nextpass to "landing">>
+<<set $openOrClosed to "closed">>
 <<set $transcript to false>>
 <<set $playToggle to false>>
 <<set $captionToggle to false>>
@@ -697,7 +698,7 @@ setup.backThirty = () => {
 
 <p>Our artwork is on the front gate of the garden </p>
 
-<p> Is the church <div class="inline-btn-wrapper"><<link "open">><<set $church to "open">><<goto "instnar2">><</link>> or <div class="inline-btn-wrapper"><<link "closed">><<set $church to "closed">><<goto "instnar2">><</link>></div></div>?</p>
+<p> Is the church <div class="inline-btn-wrapper"><<link "open">><<set $openOrClosed to "open">><<goto "instnar2">><</link>> or <div class="inline-btn-wrapper"><<link "closed">><<set $openOrClosed to "closed">><<goto "instnar2">><</link>></div></div>?</p>
  
 </main>
 <<include "footer">>
@@ -716,15 +717,15 @@ setup.backThirty = () => {
 <<include "header">>
 <main class="instructions">
 <div id="map" class="hide">$map</div>
-  <<if $church is "open">>
+  <<if $openOrClosed is "open">>
   <<audio ":all" stop>><<audio "58" play>>
    <p> Go inside and take a seat.</p>
 
 <p>(If there is a service on, go back and press closed)</p>
   <<button "I'm ready">><<goto $nextpass>><</button>>
 <</if>>
-  <<if $church is "closed">>
-  <audio ":all" stop>><<audio "59" play>>
+  <<if $openOrClosed is "closed">>
+  <<audio ":all" stop>><<audio "60" play>>
 <p>Go through to the Garden and take seat on one of the benches </p>
 <p>You can see the view right down to the river</p>
     <<button "I'm ready">><<goto $nextpass>><</button>>
@@ -740,7 +741,7 @@ setup.backThirty = () => {
 :: bullet [nobr]  {"position":"700,175","size":"100,100"}
 <<set $prevpass to "instnar2">>
 <<set $passage to "bullet">>
-<<set $nextpass to "instnar3">>
+<<set $nextpass to "oneartist">>
 <<set $transcript to false>>
 <<set $playToggle to false>>
 <<set $captionToggle to false>>
@@ -749,7 +750,7 @@ setup.backThirty = () => {
 <<set $showMap to false>>
 <<set $transcriptname to  "bullettranscript">>
 <<include "headerstory">>
-<audio ":all" stop>><<audio "59" play>>
+<<audio ":all" stop>><<audio "59" play>>
 <main class="story" id="storyContainer">
 <audio id="audio" >
   <source src="https://www.dropbox.com/s/zo70uwg7pv2cgcj/09.%20Bullet%20words%20and%20Tank%20songs%20V2.mp3?raw=1">
@@ -904,46 +905,76 @@ We’ll never know all their names or how many people have been killed. So we’
 <<include "footer">>
 
 
-:: epilogue [nobr]
+:: epilogue [nobr]  {"position":"700,175","size":"100,100"}
 <<set $prevpass to "oneartist">>
-<<set $passage to "instnar3">>
+<<set $passage to "epilogue">>
 <<set $nextpass to "end">>
-<<set $showMap to false>>
-<<set $showAudio to false>>
-<<set $showReplay to true>>
+<<set $transcript to false>>
+<<set $playToggle to true>>
+<<set $captionToggle to false>>
 <<set $showBackwards to true>>
-<<set $showForwards to true>>
+<<set $showForwards to false>>
+<<set $showReplay to false>>
 <<set $showCaptionsIcon to false>>
-
-
-<audio id="audio" >
+<<set $showMap to false>>
+<<set $transcriptname to  "epiloguetranscript">>
+<audio id="audio" autoplay>
   <source src="https://www.dropbox.com/s/zi644b5agbfrjif/Epilogue%20V1.mp3?raw=1">
   <track kind="captions" srclang="en" label="English captions" id="captrack" default>
 </audio>
-
-<div id="audio"></div>
-/* TODO FROM HERE AUDIO IS PART OF EPILOGUE */
-/* TODO ADD FOOTER & Transcript  */
-<main class="instructions">
+<<timed 50s>> 
+  <<set $showForwards to true>>
+    <<set $showCaptionsIcon to true>>
+   <<include "headerstory">>
+<</timed>>
+<main class="instructions mainWrapper" id="storyContainer">
 <div id="map" class="hide">$map</div>
-<p>With Fire And Rage is created from the testomiones, photography, artwork and music of artists across Ukraine. </p>
-<p>I invite you to discover their work... To dive, to realize and recognise Ukraine's rich and interesting culture.</p>
+<div id="mount">
+  <p class="comment">With Fire And Rage is created from the testomiones, photography, artwork and music of artists across Ukraine. </p>
+  <p class="comment">I invite you to discover their work... To dive, to realize and recognise Ukraine's rich and interesting culture.</p>
 
-<p>[LINK HERE]</p>
+  <a href="https://www.withfireandrage.com/artists" target="_blank" rel="noreferrer" style="color:var(--color-yellow) ">withfireandrage.com/artists</a>
+</div>
 
-<p>Finally, before I leave you in your city and go back to mine, I invite you to listen to one more piece… </p>
-<p>
-  A poem that starts at the end and finishes at the beginning. 
-  Maybe you can listen walking down to the river. 
-</p>
-<p>On your way home, or save it for another day…</p>
-
-
-  <<button "Next">><<goto $nextpass>><</button>>
-
-
+<<timed 29s>>
+  <<replace "#mount">>
+    <p class="comment">Finally, before I leave you in your city and go back to mine, I invite you to listen to one more piece... </p>
+    <p class="comment">
+      A poem that starts at the end and finishes at the beginning. 
+      Maybe you can listen walking down to the river. 
+    </p>
+    <p class="comment">On your way home, or save it for another day...</p>
+  <</replace>>
+<</timed>>
 </main>
-<<include "footer">>
+<<include footer>>
+<<timed 50s>>
+  /* <<removeclass "#playpause" "hide">> */
+    <<include "footerstory">>
+   <<removeclass ".mainWrapper" "instructions">>
+    <<addclass ".mainWrapper" "story">>
+  <<replace ".mainWrapper">> 
+    <div class="poster-wrapper" id="poster">
+      <img class="poster" src="./../assets/img/bullet.png"/>
+    </div>
+    <div id="caption" class="hide"></div>
+    <div id="transcript"></div>
+    <div id="mount">  <p class="comment"> When you're finished listening, let me know <div class="inline-btn-wrapper"><<button "I'm finished">><<goto $nextpass>><</button>></div></p></div>
+  <</replace>>
+  <<set $addC to setup.addCaptions("bullet")>>
+  <<timed 0.1s>> <<addclass "#playpause" "playhighlight">>
+  <</timed>>
+<</timed>>
+<<done>>
+  /* <<set $addC to setup.addCaptions("bullet")>> */
+  /* <<addclass "#playpause" "hide">> */
+<</done>>
+
+:: epiloguetranscript
+
+<h2>Transcript</h2>
+
+Epilogue transcript
 
 
 
@@ -953,7 +984,7 @@ We’ll never know all their names or how many people have been killed. So we’
 
 
 :: end [nobr]
-<<set $prevpass to "instnar3">>
+<<set $prevpass to "epilogue">>
 <<set $passage to "end">>
 <<set $nextpass to "end">>
 <<set $showMap to false>>
@@ -963,20 +994,8 @@ We’ll never know all their names or how many people have been killed. So we’
 <<set $showForwards to false>>
 <<set $showCaptionsIcon to false>>
 
-
 <main class="end">
-<div id="audio"></div>
-<div id="map" class="hide">$map</div>
-<div id="mount"></div>
-
- <h3>Epilogue</h3>
- <br/>
-    <a href="https://fr-spirits-concrete-iron.netlify.app/">
-<button>Start</button></a>
-
-
-
-/* <p>Or back to the main <a href="https://liv-ukr-main.netlify.app/map">map</a></p> */
+  <a href="https://www.withfireandrage.com" target="_blank" rel="noreferrer" style="color:var(--color-yellow) "><h2>withfireandrage.com</h2></a>
 </main>
 <<include "footer">>
 
