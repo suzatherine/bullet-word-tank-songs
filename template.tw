@@ -14,8 +14,8 @@ Bullet Words & Tank Songs
 
 :: Story Stylesheet [stylesheet]
 @import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;600&display=swap");
-@import url("./styles/generics.css");
-@import url("./styles/styles.css");
+@import url("styles/generics.css");
+@import url("styles/styles.css");
 
 
 
@@ -212,10 +212,10 @@ setup.backThirty = () => {
 
 
 :: StoryInit {"position":"100,100","size":"100,100"}
-<<cacheaudio "57" "./../assets/audio/57v2.mp3">>
-<<cacheaudio "58" "./../assets/audio/58.mp3">>
-<<cacheaudio "59" "./../assets/audio/59V2.mp3">>
-<<cacheaudio "60" "./../assets/audio/60.mp3">>
+<<cacheaudio "57" "assets/audio/57v2.mp3">>
+<<cacheaudio "58" "assets/audio/58.mp3">>
+<<cacheaudio "59" "assets/audio/59V2.mp3">>
+<<cacheaudio "60" "assets/audio/60.mp3">>
 <<waitforaudio>>
 
 
@@ -301,7 +301,7 @@ setup.backThirty = () => {
   <<if $sendOn is true>>
  <div class="nav-wrapper" id="forIcon">
     <div class="nav-item " >
-        <a href="https://fr-our-place-in-our-city.netlify.app/">
+        <a href="https://www.withfireandrage.com">
 <img src="assets/img/for.png"></a>
     </div>
   </div>
@@ -603,14 +603,43 @@ setup.backThirty = () => {
 <main class="" id="">
 
 <div class="poster-wrapper" id="poster">
-   <img class="poster" src="./../assets/img/bullet-title.jpeg"/>
+   <img class="poster" src="assets/img/bullet-title.jpeg"/>
  </div>
 <div class="menu-wrapper">
     <<button "Keep going">><<goto $nextpass>><</button>>
      <<button "I'm joining the audio tour here">><<goto "framing">><</button>>
-     <a href="https://www.withfireandrage.com" rel="noreferrer"><button>Leave the Tour</button></a>
+    <<button "Leave">><<goto "leave">><</button>>
 </div>
 </main>
+
+:: leave [nobr]
+<<set $prevpass to "beginning">>
+<<set $passage to "leave">>
+<<set $nextpass to "leave">>
+<<set $transcript to false>>
+<<set $playToggle to false>>
+<<set $captionToggle to false>>
+<<set $showForwards to false>>
+<<set $showBackwards to true>>
+<<set $showCaptionsIcon to false>>
+<<set $showMap to false>>
+<audio id="audio" autoplay >
+  <source src="https://withfireandrageliverpool.com/audio/ONB/CreditsAltV1.mp3">
+</audio>
+<main class="instructions" id="">
+<div id="mount"></div>
+<p>Thank you for joining me today</p>
+
+<p>With Fire And Rage is created from the testimonies, art, photography, and music of artists across Ukraine </p>
+<p>I invite you to discover their work </p>
+<p>Listen to more online</p>
+<p>Or visit other locations another day</p>
+
+<a href="https://www.withfireandrage.com"  rel="noreferrer" style="color:var(--color-yellow) "><p>withfireandrage.com</p></a>
+
+</main>
+<<include "footer">>
+
 
 :: framing [nobr]  {"position":"700,175","size":"100,100"}
 <<set $prevpass to "beginning">>
@@ -902,7 +931,7 @@ setup.backThirty = () => {
   <<audio ":all" stop>><<audio "58" play>>
    <p> Go inside and take a seat.</p>
 <br>
-  <div class="caution" ><img src="assets/img/caution.png"><p>(If there is a service on, go back and press closed)</p></div>
+  <div class="caution" ><img src="assets/img/caution.png"><p>If a service on, go back and press closed</p></div>
 <br>
   <<button "I'm ready">><<goto $nextpass>><</button>>
 <</if>>
@@ -941,7 +970,7 @@ setup.backThirty = () => {
 
 </audio>
 <div class="poster-wrapper" id="poster">
-   <img class="poster" src="./../assets/img/bullet.jpg"/>
+   <img class="poster" src="assets/img/bullet.jpg"/>
  </div>
   
 <div id="transcript"></div>
@@ -1121,7 +1150,7 @@ So I will leave each listener, with the name of one artist, to read about and re
 :: oneartist[nobr]
 <<set $prevpass to "bullet">>
 <<set $passage to "oneartist">>
-<<set $nextpass to "thanks">>
+<<set $nextpass to "credits">>
 <<set $showMap to false>>
 <<set $showAudio to false>>
 <<set $showReplay to true>>
@@ -1325,7 +1354,7 @@ So I will leave each listener, with the name of one artist, to read about and re
   biog: "Mykola was a Ukrainian poet, translator, classical and literary scholar and critic. He is considered to be one of the leading figures of the Executed Renaissance.",
   death: "Killed in 1936"}]>>
 
-<main >
+<main style="justify-content:flex-start" >
 <div id="mount"></div>
 <<timed 0.5s>><<replace "#mount">>
 <h1><<print $artists[random($artists.length-1)].artist>></h1>
@@ -1335,37 +1364,23 @@ So I will leave each listener, with the name of one artist, to read about and re
 <strong><<print $artists[random($artists.length-1)].death>></strong>
 <</replace>><</timed>>
 
+<<timed 5s>><<append "#mount">>
+<br><br><br><br>
+<div style="display:flex; width:100%;justify-content:flex-end"><p style="" class="comment"> Thank you for joining me today</p></div><</append>><</timed>>
+<<timed 7s>><<append "#mount">>
+<p style="text-align:right"><<button "Next">><<goto "credits">><</button>></p>
+<</append>><</timed>>
 
-<<timed 20s>><<goto $nextpass>><</timed>>
-
+/* TODO CHANGE  */
 </main>
 
 <<include "footer">>
 
 
-:: thanks [nobr]  {"position":"700,175","size":"100,100"}
-<<set $prevpass to "oneartist">>
-<<set $passage to "thanks">>
-<<set $nextpass to "credits">>
-<<set $transcript to false>>
-<<set $playToggle to true>>
-<<set $captionToggle to false>>
-<<set $showBackwards to true>>
-<<set $showForwards to true>>
-<<set $showReplay to false>>
-<<set $showCaptionsIcon to false>>
-<<set $showMap to false>>
-<<set $transcriptname to  "epiloguetranscript">>
 
-
-<main class="instructions mainWrapper" id="storyContainer" style="justify-content: center; align-items:center">
-<h2 style="text-align: center;"> Thank you for joining me today</h2>
-<<button "Next">><<goto "credits">><</button>>
-</main>
-<<include "footer">>
 
 :: credits [nobr]  {"position":"700,175","size":"100,100"}
-<<set $prevpass to "thanks">>
+<<set $prevpass to "oneartist">>
 <<set $passage to "credits">>
 <<set $nextpass to "epilogue">>
 <<set $transcript to false>>
@@ -1412,7 +1427,7 @@ So I will leave each listener, with the name of one artist, to read about and re
   <source src="https://withfireandrageliverpool.com/audio/EP/EpilogueV2.mp3">
 </audio>
 <div class="poster-wrapper" id="poster">
-   <img class="poster" src="./../assets/img/main.jpeg"/>
+   <img class="poster" src="assets/img/main.jpeg"/>
  </div>
   
 <div id="transcript"></div>
