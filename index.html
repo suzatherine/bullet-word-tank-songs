@@ -702,7 +702,7 @@ setup.backThirty = () => {
 &lt;&lt;/append&gt;&gt;&lt;&lt;/timed&gt;&gt;
 
 &lt;&lt;timed 8s&gt;&gt;&lt;&lt;append &quot;#mount&quot;&gt;&gt;
-&lt;p&gt;You can move forward via a button like&lt;&lt;button &quot;This&quot;&gt;&gt;&lt;&lt;goto $nextpass&gt;&gt;&lt;&lt;/button&gt;&gt;&lt;/p&gt; 
+&lt;p&gt;To move forward press a button like &lt;&lt;button &quot;Next&quot;&gt;&gt;&lt;&lt;goto $nextpass&gt;&gt;&lt;&lt;/button&gt;&gt;&lt;/p&gt; 
 &lt;&lt;/append&gt;&gt;&lt;&lt;/timed&gt;&gt;
  
 &lt;/main&gt;
@@ -837,7 +837,7 @@ setup.backThirty = () => {
 &lt;main class=&quot;instructions&quot;&gt;
 &lt;h2&gt;Onboarding&lt;/h2&gt;
 &lt;div id=&quot;map&quot; class=&quot;hide&quot;&gt;$map&lt;/div&gt;
-&lt;div id=&quot;mount&quot;&gt;&lt;/div&gt;
+&lt;div id=&quot;mount&quot; class=&quot;onboarding&quot;&gt;&lt;/div&gt;
 &lt;&lt;timed 0.1s&gt;&gt;
   &lt;&lt;append &quot;#mount&quot;&gt;&gt;
     &lt;p&gt;At every location, I will suggest places to sit, to lean, to shelter&lt;/p&gt;
@@ -872,16 +872,16 @@ setup.backThirty = () => {
 
    &lt;div class=&quot;multiple-icon-wrapper&quot;&gt;
       &lt;div class=&quot;multiple-icon-item&quot;&gt;
-      &lt;img src=&quot;assets/img/wifi.png&quot; &gt;
-    &lt;span&gt;Phone Charger  &lt;/span&gt;
-    &lt;/div&gt;
-        &lt;div class=&quot;multiple-icon-item&quot;&gt;
       &lt;img src=&quot;assets/img/stepfree.png&quot; &gt;
     &lt;span&gt;Step-free access &lt;/span&gt;
     &lt;/div&gt;
       &lt;div class=&quot;multiple-icon-item&quot;&gt;
+      &lt;img src=&quot;assets/img/charge.png&quot; &gt;
+    &lt;span&gt;Phone Charger  &lt;/span&gt;
+    &lt;/div&gt;
+      &lt;div class=&quot;multiple-icon-item&quot;&gt;
       &lt;img src=&quot;assets/img/caution.png&quot; &gt;
-    &lt;span&gt;Caution! take care crossing roads&lt;/span&gt;
+    &lt;span&gt;Caution!&lt;/span&gt;
     &lt;/div&gt;
 &lt;/div&gt;
 
@@ -964,7 +964,7 @@ setup.backThirty = () => {
 &lt;&lt;audio &quot;:all&quot; stop&gt;&gt;&lt;&lt;audio &quot;59&quot; play&gt;&gt;
 &lt;main class=&quot;story&quot; id=&quot;storyContainer&quot;&gt;
 &lt;audio id=&quot;audio&quot; &gt;
-  &lt;source src=&quot;https://withfireandrageliverpool.com/audio/BW/bulletsv3.mp3&quot;&gt;
+  &lt;source src=&quot;https://withfireandrageliverpool.com/audio/BW/bulletsv4.mp3&quot;&gt;
 
 &lt;/audio&gt;
 &lt;div class=&quot;poster-wrapper&quot; id=&quot;poster&quot;&gt;
@@ -993,7 +993,7 @@ setup.backThirty = () => {
  &lt;&lt;/replace&gt;&gt;
 
  &lt;&lt;/timed&gt;&gt;
- &lt;&lt;timed 596s &gt;&gt;&lt;&lt;goto &quot;oneartist&quot;&gt;&gt;
+ &lt;&lt;timed 565s &gt;&gt;&lt;&lt;goto &quot;oneartist&quot;&gt;&gt;
  &lt;&lt;/timed&gt;&gt;
 &lt;/main&gt;
 

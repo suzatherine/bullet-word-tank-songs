@@ -677,7 +677,7 @@ setup.backThirty = () => {
 <</append>><</timed>>
 
 <<timed 8s>><<append "#mount">>
-<p>You can move forward via a button like<<button "This">><<goto $nextpass>><</button>></p> 
+<p>To move forward press a button like <<button "Next">><<goto $nextpass>><</button>></p> 
 <</append>><</timed>>
  
 </main>
@@ -825,7 +825,7 @@ setup.backThirty = () => {
 <main class="instructions">
 <h2>Onboarding</h2>
 <div id="map" class="hide">$map</div>
-<div id="mount"></div>
+<div id="mount" class="onboarding"></div>
 <<timed 0.1s>>
   <<append "#mount">>
     <p>At every location, I will suggest places to sit, to lean, to shelter</p>
@@ -860,16 +860,16 @@ setup.backThirty = () => {
 
    <div class="multiple-icon-wrapper">
       <div class="multiple-icon-item">
-      <img src="assets/img/wifi.png" >
-    <span>Phone Charger  </span>
-    </div>
-        <div class="multiple-icon-item">
       <img src="assets/img/stepfree.png" >
     <span>Step-free access </span>
     </div>
       <div class="multiple-icon-item">
+      <img src="assets/img/charge.png" >
+    <span>Phone Charger  </span>
+    </div>
+      <div class="multiple-icon-item">
       <img src="assets/img/caution.png" >
-    <span>Caution! take care crossing roads</span>
+    <span>Caution!</span>
     </div>
 </div>
 
@@ -882,6 +882,7 @@ setup.backThirty = () => {
 <</timed>>
 </main>
 <<include "footer">>
+
 
 :: landing [nobr]
 <<set $title to "Bullet Words & Tank Songs">>
@@ -966,7 +967,7 @@ setup.backThirty = () => {
 <<audio ":all" stop>><<audio "59" play>>
 <main class="story" id="storyContainer">
 <audio id="audio" >
-  <source src="https://withfireandrageliverpool.com/audio/BW/bulletsv3.mp3">
+  <source src="https://withfireandrageliverpool.com/audio/BW/bulletsv4.mp3">
 
 </audio>
 <div class="poster-wrapper" id="poster">
@@ -995,7 +996,7 @@ setup.backThirty = () => {
  <</replace>>
 
  <</timed>>
- <<timed 596s >><<goto "oneartist">>
+ <<timed 565s >><<goto "oneartist">>
  <</timed>>
 </main>
 
